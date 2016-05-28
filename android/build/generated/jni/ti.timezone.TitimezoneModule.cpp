@@ -124,9 +124,9 @@ Handle<Value> TitimezoneModule::getter_defaultTimezone(Local<String> property, c
 	}
 	static jmethodID methodID = NULL;
 	if (!methodID) {
-		methodID = env->GetMethodID(TitimezoneModule::javaClass, "getDefaultTimezone", "()Ljava/lang/String;");
+		methodID = env->GetMethodID(TitimezoneModule::javaClass, "getDefaultTimezone", "()Lorg/appcelerator/kroll/KrollDict;");
 		if (!methodID) {
-			const char *error = "Couldn't find proxy method 'getDefaultTimezone' with signature '()Ljava/lang/String;'";
+			const char *error = "Couldn't find proxy method 'getDefaultTimezone' with signature '()Lorg/appcelerator/kroll/KrollDict;'";
 			LOGE(TAG, error);
 				return titanium::JSException::Error(error);
 		}
@@ -141,7 +141,7 @@ Handle<Value> TitimezoneModule::getter_defaultTimezone(Local<String> property, c
 	jvalue* jArguments = 0;
 
 	jobject javaProxy = proxy->getJavaObject();
-	jstring jResult = (jstring)env->CallObjectMethodA(javaProxy, methodID, jArguments);
+	jobject jResult = (jobject)env->CallObjectMethodA(javaProxy, methodID, jArguments);
 
 
 
@@ -161,7 +161,7 @@ Handle<Value> TitimezoneModule::getter_defaultTimezone(Local<String> property, c
 		return Null();
 	}
 
-	Handle<Value> v8Result = titanium::TypeConverter::javaStringToJsString(env, jResult);
+	Handle<Value> v8Result = titanium::TypeConverter::javaObjectToJsValue(env, jResult);
 
 	env->DeleteLocalRef(jResult);
 
