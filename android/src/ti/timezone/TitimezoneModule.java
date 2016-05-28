@@ -10,22 +10,12 @@ package ti.timezone;
 
 import org.appcelerator.kroll.KrollModule;
 import org.appcelerator.kroll.annotations.Kroll;
-
 import org.appcelerator.titanium.TiApplication;
-import org.appcelerator.kroll.common.Log;
-import org.appcelerator.kroll.common.TiConfig;
 import java.util.TimeZone;
-import java.util.Locale;
 import org.appcelerator.kroll.KrollDict;
 
 @Kroll.module(name = "Titimezone", id = "ti.timezone")
 public class TitimezoneModule extends KrollModule {
-
-	// Standard Debugging variables
-	private static final String LCAT = "TitimezoneModule";
-
-	// You can define constants with @Kroll.constant, for example:
-	// @Kroll.constant public static final String EXTERNAL_NAME = value;
 
 	public TitimezoneModule() {
 		super();
@@ -33,21 +23,15 @@ public class TitimezoneModule extends KrollModule {
 
 	@Kroll.onAppCreate
 	public static void onAppCreate(TiApplication app) {
-		Log.d(LCAT, "inside onAppCreate");
-		// put module init code that needs to run when the application is
-		// created
 	}
 
-	// Properties
 	@Kroll.getProperty
 	public KrollDict getDefaultTimezone() {
 		TimeZone tz = TimeZone.getDefault();
 		KrollDict res = new KrollDict();
-		res.put("short",tz.getDisplayName(false, TimeZone.SHORT));
-		res.put("long",tz.getDisplayName(false, TimeZone.LONG));
-		res.put("id",tz.getID());
+		res.put("short", tz.getDisplayName(false, TimeZone.SHORT));
+		res.put("long", tz.getDisplayName(false, TimeZone.LONG));
+		res.put("id", tz.getID());
 		return res;
 	}
-	
-
 }
