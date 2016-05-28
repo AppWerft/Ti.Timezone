@@ -1,4 +1,4 @@
-<project name="titimezone" default="dist">
+<project name="Ti.Timezone" default="dist">
 	<description>
 		Ant build script for Titanium Android module titimezone
 	</description>

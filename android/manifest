@@ -11,7 +11,7 @@ license: Specify your license
 copyright: Copyright (c) 2016 by 
 
 # these should not be edited
-name: titimezone
+name: Ti.Timezone
 moduleid: ti.timezone
 guid: 762bddf7-c9a1-4e3e-b583-1abdc04a58ee
 platform: android
