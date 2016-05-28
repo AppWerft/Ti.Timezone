@@ -16,6 +16,7 @@ import org.appcelerator.kroll.common.Log;
 import org.appcelerator.kroll.common.TiConfig;
 import java.util.TimeZone;
 import java.util.Locale;
+import org.appcelerator.kroll.KrollDict;
 
 @Kroll.module(name = "Titimezone", id = "ti.timezone")
 public class TitimezoneModule extends KrollModule {
@@ -39,8 +40,14 @@ public class TitimezoneModule extends KrollModule {
 
 	// Properties
 	@Kroll.getProperty
-	public String getDefaultTimezone() {
-		return java.util.TimeZone.getDefault().toString();
+	public KrollDict getDefaultTimezone() {
+		TimeZone tz = TimeZone.getDefault();
+		KrollDict res = new KrollDict();
+		res.put("short",tz.getDisplayName(false, TimeZone.SHORT));
+		res.put("long",tz.getDisplayName(false, TimeZone.LONG));
+		res.put("id",tz.getID());
+		return res;
 	}
+	
 
 }
