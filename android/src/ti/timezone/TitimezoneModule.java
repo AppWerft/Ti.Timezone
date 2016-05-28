@@ -32,6 +32,7 @@ public class TitimezoneModule extends KrollModule {
 		res.put("short", tz.getDisplayName(false, TimeZone.SHORT));
 		res.put("long", tz.getDisplayName(false, TimeZone.LONG));
 		res.put("id", tz.getID());
+		res.put("offset", (int) tz.getRawOffset());
 		return res;
 	}
 }
